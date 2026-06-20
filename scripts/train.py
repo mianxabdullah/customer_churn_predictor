@@ -11,3 +11,11 @@ scaler=StandardScaler()
 numeric_cols = ['tenure','MonthlyCharges','TotalCharges']
 X_train[numeric_cols]=scaler.fit_transform(X_train[numeric_cols])
 X_test[numeric_cols]=scaler.transform(X_test[numeric_cols])
+
+from sklearn.linear_model import LogisticRegression
+model=LogisticRegression(class_weight='balanced')
+model.fit(X_train, y_train) 
+y_pred=model.predict(X_test)
+
+import joblib
+joblib.dump(model, "model/model_logistic_regression.pkl")
