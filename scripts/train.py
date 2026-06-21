@@ -42,3 +42,11 @@ print(f"Precision: {results['precision']:.2f}")
 print(f"Recall: {results['recall']:.2f}")   
 print(f"F1 Score: {results['f1_score']:.2f}")  
 print("Confusion Matrix: ",results['confusion_matrix'])
+
+from sklearn.metrics import ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
+ConfusionMatrixDisplay(results['confusion_matrix']).plot()
+plt.title("Logistic Regression Confusion Matrix")
+plt.tight_layout()
+plt.savefig("report/logistic_confusion_matrix.png")
+plt.show()
