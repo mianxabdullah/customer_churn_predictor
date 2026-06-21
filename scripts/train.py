@@ -50,3 +50,11 @@ plt.title("Logistic Regression Confusion Matrix")
 plt.tight_layout()
 plt.savefig("report/logistic_confusion_matrix.png")
 plt.show()
+
+from sklearn.ensemble import RandomForestClassifier
+rf_model=RandomForestClassifier(random_state=42)  
+rf_model.fit(X_train,y_train)  
+rf_pred=rf_model.predict(X_test)
+
+joblib.dump(rf_model, "model/model_random_forest.pkl")
+
