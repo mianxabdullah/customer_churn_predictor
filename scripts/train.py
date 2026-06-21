@@ -58,3 +58,17 @@ rf_pred=rf_model.predict(X_test)
 
 joblib.dump(rf_model, "model/model_random_forest.pkl")
 
+rf_results = evaluate_model(y_test, rf_pred)
+
+print("\n\n\tRandom Forest Model Evaluation Results:")
+print(f"Accuracy: {rf_results['accuracy']:.2f}")   
+print(f"Precision: {rf_results['precision']:.2f}")   
+print(f"Recall: {rf_results['recall']:.2f}")   
+print(f"F1 Score: {rf_results['f1_score']:.2f}")  
+print("Confusion Matrix: ",rf_results['confusion_matrix'])
+ConfusionMatrixDisplay(rf_results['confusion_matrix']).plot()
+
+plt.title("Random Forest Confusion Matrix")
+plt.tight_layout()
+plt.savefig("report/random_forest_confusion_matrix.png")
+plt.show()
