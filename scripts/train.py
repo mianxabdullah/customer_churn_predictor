@@ -93,3 +93,17 @@ dt_model.fit(X_train,y_train)
 dt_pred=dt_model.predict(X_test)
 
 joblib.dump(dt_model, "model/model_decision_tree.pkl")
+
+dt_results = evaluate_model(y_test, dt_pred)
+print("\n\n\tDecision Tree Model Evaluation Results:")
+print(f"Accuracy: {dt_results['accuracy']:.2f}")   
+print(f"Precision: {dt_results['precision']:.2f}")   
+print(f"Recall: {dt_results['recall']:.2f}")   
+print(f"F1 Score: {dt_results['f1_score']:.2f}")  
+print("Confusion Matrix: \n",dt_results['confusion_matrix'])
+
+ConfusionMatrixDisplay(dt_results['confusion_matrix']).plot()
+plt.title("Decision Tree Confusion Matrix")
+plt.tight_layout()
+plt.savefig("report/decision_tree_confusion_matrix.png")
+plt.show()
