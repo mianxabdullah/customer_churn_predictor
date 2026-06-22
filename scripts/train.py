@@ -72,3 +72,17 @@ plt.title("Random Forest Confusion Matrix")
 plt.tight_layout()
 plt.savefig("report/random_forest_confusion_matrix.png")
 plt.show()
+
+importance = rf_model.feature_importances_
+feature_importance = pd.DataFrame({
+    "feature": X_train.columns,
+    "importance": importance
+})
+feature_importance = feature_importance.sort_values(by="importance", ascending=False)
+print("\n\n\tTop 10 Important Features:")
+print(feature_importance.head(10))
+feature_importance.head(10).plot(kind='barh', x='feature', y='importance')
+plt.title("Top 10 Important Features")
+plt.tight_layout()
+plt.savefig("report/random_forest_feature_importance.png")
+plt.show()
