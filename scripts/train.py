@@ -91,3 +91,5 @@ from sklearn.tree import DecisionTreeClassifier
 dt_model=DecisionTreeClassifier(random_state=42)
 dt_model.fit(X_train,y_train)  
 dt_pred=dt_model.predict(X_test)
+
+joblib.dump(dt_model, "model/model_decision_tree.pkl")
