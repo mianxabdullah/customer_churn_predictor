@@ -86,3 +86,8 @@ plt.title("Top 10 Important Features")
 plt.tight_layout()
 plt.savefig("report/random_forest_feature_importance.png")
 plt.show()
+
+from sklearn.tree import DecisionTreeClassifier
+dt_model=DecisionTreeClassifier(random_state=42)
+dt_model.fit(X_train,y_train)  
+dt_pred=dt_model.predict(X_test)
