@@ -1,10 +1,29 @@
+"""
+ML Project Workflow:
+1. load and understand data (EDA)
+2. preprocess data : handle missing values, data types
+3. encode categorical features(columns) using label encoding or one hot encoding
+4. train test split data into train and test set
+5. scale data using standardscaler or minmaxscaler
+6. train model using logistic regression or random forest classifier
+7. evaluate model using accuracy, precision, recall, f1 score and confusion matrix
+8. save model using joblib or pickle
+9. visualize results using matplotlib or seaborn
+"""
 import pandas as pd
-df=pd.read_csv("data\\raw\\churn.csv")
+df=pd.read_csv("Project\\data\\raw\\churn.csv")
+print("Null values in each column:")
 print(df.isnull().sum())
+print("\nData types and information:")
+print(df.info())
+print("\nDescriptive statistics:")
 print(df.describe())
 df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
 df = df.dropna()
+print("\nUnique values in 'TechSupport' column:")
 print(df['TechSupport'].unique())
+print("\nUnique values in 'InternetService' column:")
+print(df['InternetService'].unique())
 df=df.drop(columns=['customerID'])
 
 #for eda
